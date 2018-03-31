@@ -1,8 +1,8 @@
-import Models from '../models';
+import Product from '../models/Product.model';
 import {handleError } from '../libs/errors';
 
 export const getAllProducts = (req, res) => {
-  Models.Product.find({})
+  Product.find({})
   .then(products => {
     return res.json(products.map(p => p.serialize),);
   })
