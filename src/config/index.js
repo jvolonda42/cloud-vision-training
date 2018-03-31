@@ -1,7 +1,7 @@
 export default {
   db: {
     host: 'localhost',
-    port: '3306',
+    port: '27017',
     dbName: 'early-birds',
   },
   server: {
@@ -26,4 +26,4 @@ export default {
     //   }
     // }
   ],
-}
+};
