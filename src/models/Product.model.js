@@ -11,6 +11,11 @@ const ProductSchema = mongoose.Schema({
     green: {type: Number},
     blue: {type: Number},
     alpha: {type: Number},
+  },
+  labColors: {
+    red: {type: Number},
+    green: {type: Number},
+    blue: {type: Number},
   }
 });
 
@@ -23,6 +28,7 @@ ProductSchema.virtual('serialize').get(function () {
     pageUrl: this.pageUrl,
     imageUrl: this.imageUrl,
     dominantColor: this.dominantColor,
+    labColors: this.labColors,
   };
 });
 

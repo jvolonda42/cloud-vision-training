@@ -1,5 +1,5 @@
 import * as productController from "../controllers/Product.controller.js"
-// import * as productValidator from "../validators/Product.validator.js"
+import * as productValidator from "../validators/Product.validator.js"
 
 export default [
 /**
@@ -17,5 +17,11 @@ export default [
     path: '/products',
     validators: [],
     handler: productController.getAllProducts,
+  },
+  {
+    method: 'GET',
+    path: '/sandbox/:productId',
+    validators: [productValidator.getProductById],
+    handler: productController.sandbox,
   },
 ]
