@@ -1,3 +1,5 @@
+import logger from '../libs/logger';
+
 export class NotFoundError {
   constructor (target) {
     this.target = target
@@ -18,7 +20,7 @@ export class MissingParamsError {
 }
 
 export const handleError = (err, res, message) => {
-  Logger.error('In error handler', err)
+  logger.error('In error handler', err)
   if (err instanceof NotFoundError) {
     return res.status(404).json({ results: null, message: `${err.target} not found` })
   } else if (err instanceof ValidationError) {

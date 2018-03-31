@@ -6,7 +6,12 @@ const ProductSchema = mongoose.Schema({
   type: { type: String },
   pageUrl: { type: String },
   imageUrl: { type: String },
-  dominantColors: [{type: String}]
+  dominantColor: {
+    red: {type: Number},
+    green: {type: Number},
+    blue: {type: Number},
+    alpha: {type: Number},
+  }
 });
 
 ProductSchema.virtual('serialize').get(function () {
@@ -17,7 +22,7 @@ ProductSchema.virtual('serialize').get(function () {
     name: this.name,
     pageUrl: this.pageUrl,
     imageUrl: this.imageUrl,
-    dominantColors: this.dominantColors,
+    dominantColor: this.dominantColor,
   };
 });
 
