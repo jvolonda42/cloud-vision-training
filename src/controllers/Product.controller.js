@@ -1,6 +1,5 @@
 import Product from '../models/Product.model';
 import { handleError, NotFoundError } from '../libs/errors';
-import rgb2lab from '../libs/colorProximity';
 
 export const getAllProducts = (req, res) => {
   Product.find({})
@@ -10,18 +9,7 @@ export const getAllProducts = (req, res) => {
     .catch(err => handleError(err, res, 'failed to fetch products'));
 }
 
-export const getProductById = async (req, res) => {
-  try {
-    const product = await Product.findOne({ _id: req.params.productId })
-    if (!product)
-      handleError(new NotFoundError('product'), res);
-    return res.json(product.serialize);
-  } catch (error) {
-    handleError(error, res, 'failed to fetch product')
-  }
-}
-
-export const sandbox = async (req, res) => {
+export const getRelevantProductById = async (req, res) => {
   try {
     const product = await Product.findOne({ _id: req.params.productId })
     if (!product)

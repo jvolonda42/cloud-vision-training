@@ -20,8 +20,8 @@ export default [
   },
   {
     method: 'GET',
-    path: '/sandbox/:productId',
+    path: '/products/:productId/relevant',
     validators: [productValidator.getProductById],
-    handler: productController.sandbox,
+    handler: productController.getRelevantProductById,
   },
 ]

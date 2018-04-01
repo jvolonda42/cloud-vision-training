@@ -16,14 +16,5 @@ export default {
         colorize: true,
       },
     },
-    // {
-    //   type: 'File',
-    //   configuration: {
-    //     level: 'silly',
-    //     filename: './log/debug.log',
-    //     maxsize: 5242880,
-    //     handleExceptions: true,
-    //   }
-    // }
   ],
 };
