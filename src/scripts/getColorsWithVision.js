@@ -1,7 +1,6 @@
 import async from 'async';
 import colourProximity from 'colour-proximity';
 import Product from '../models/Product.model';
-import { handleError } from '../libs/errors';
 import cloudVision from '../libs/cloudVision';
 import db from '../libs/database';
 import _ from 'lodash';
@@ -11,6 +10,9 @@ const logAndExit = (message, statusCode) => {
   process.exit(statusCode);
 }
 
+/**
+ * Use google cloud vision to get dominant color.
+ */
 const getColorsWithVision = async () => {
   try {
     let products = await Product.find({}).limit(500);

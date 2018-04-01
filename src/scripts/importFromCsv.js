@@ -8,11 +8,18 @@ const logAndExit = (message, statusCode) => {
   process.exit(statusCode);
 }
 
+/**
+ * Construct product's database from csv file.
+ * 
+ * @param {string} csv file
+ */
 var parser = parse({ delimiter: ';', columns: true }, function (err, data) {
   data.map((d, index) => {
     Product.findOne({ ref: d.id })
       .then(product => {
         if (!product) {
+          if (!d.id || !d.photo)
+            logAndExit('product\'s photo or id is missing', 1);
           new Product({ ref: d.id, name: d.title, type: d.sleeve, imageUrl: `https:${d.photo}`, pageUrl: d.url, }).save()
             .then(res => {
               if (index === data.length - 1) {

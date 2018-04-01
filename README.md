@@ -13,4 +13,4 @@ npm run serve
 
 ## Routes availables
 ```localhost:8080/products``` list all products \
-```localhost:8080/products/:productId/relevant``` list 10 most relevant products based on color
+```localhost:8080/products/:productId/relevant``` list 10 most relevant products based on product's dominant color 
