@@ -1,7 +1,5 @@
 var fs = require('fs');
 var parse = require('csv-parse');
-// var Product = require('../models/Product.model').default;
-import async from 'async';
 import Product from '../models/Product.model';
 import db from '../libs/database';
 
