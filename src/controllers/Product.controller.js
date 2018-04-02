@@ -25,9 +25,9 @@ export const getAllProducts = (req, res) => {
  */
 export const getRelevantProductById = async (req, res) => {
   try {
-    const product = await Product.findOne({ _id: req.params.productId })
+    const product = await Product.findOne({ ref: req.params.productId })
     if (!product)
-      handleError(new NotFoundError('product'), res);
+      return handleError(new NotFoundError('product'), res);
     const products = await Product.aggregate().project({
       "result": {
         "$sqrt": {
@@ -37,10 +37,10 @@ export const getRelevantProductById = async (req, res) => {
           ]
         }
       },
-      "ref": 1, "imageUrl": 1, "name": 1, "ref": 1
-    }).match({ _id: { $ne: product._id } }).sort("result").limit(10).exec()
+      "ref": 1, "imageUrl": 1, "name": 1
+    }).match({ ref: { $ne: product.ref } }).sort("result").limit(10).exec()
     return res.json({ results: products.map(p => p) });
   } catch (error) {
-    handleError(error, res, 'failed to fetch product')
+    return handleError(error, res, 'failed to fetch product')
   }
 }
