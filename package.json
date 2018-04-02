@@ -4,7 +4,6 @@
   "description": "import product from csv - use google cloud vision on them to get dominant color - api that return similar products",
   "main": "index.js",
   "scripts": {
-    "webpack": "./node_modules/.bin/webpack -w",
     "dev": "nodemon --ignore dist/ --ignore yarn.lock --ignore package.json --exec \"npm start\"",
     "start": "npm run build && npm run serve",
     "build": "babel src --out-dir dist",
@@ -43,7 +42,6 @@
   "dependencies": {
     "@google-cloud/vision": "^0.18.0",
     "async": "^2.6.0",
-    "axios": "^0.18.0",
     "babel-loader": "^7.1.4",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.2",
